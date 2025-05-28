@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinués - Valle de Aísa</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .frame-container {
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .menu-frame {
+            width: 200px;
+            min-width: 200px;
+            background: #CCFFFF;
+            border-right: 3px solid #3498db;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-frame {
+            flex: 1;
+            background: white;
+            overflow: auto;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .frame-container {
+                flex-direction: column;
+            }
+            
+            .menu-frame {
+                width: 100%;
+                height: 150px;
+                min-width: auto;
+            }
+            
+            .content-frame {
+                height: calc(100vh - 150px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame-container">
+        <div class="menu-frame">
+            <iframe src="menu.htm" name="menu" title="Menú de navegación"></iframe>
+        </div>
+        <div class="content-frame">
+            <iframe src="contenido.htm" name="contenido" title="Contenido principal"></iframe>
+        </div>
+    </div>
+</body>
+</html> 
