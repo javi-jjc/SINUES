@@ -12,9 +12,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: 
+                linear-gradient(135deg, #8B4513 0%, #DEB887 50%, #8B4513 100%);
+            color: #654321;
             line-height: 1.6;
             min-height: 100vh;
         }
@@ -23,27 +24,38 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: 
+                linear-gradient(145deg, #DEB887 0%, #8B4513 100%);
+            border: 4px solid #654321;
+            border-radius: 12px;
+            box-shadow: 
+                inset 3px 3px 8px rgba(255, 255, 255, 0.3),
+                inset -3px -3px 8px rgba(0, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
             margin-bottom: 20px;
         }
 
         .header {
             text-align: center;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #654321 100%);
+            color: #DEB887;
             padding: 30px;
-            border-radius: 15px;
+            border: 3px solid #654321;
+            border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                inset 2px 2px 6px rgba(255, 255, 255, 0.2),
+                inset -2px -2px 6px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #DEB887;
         }
 
         .header p {
@@ -51,6 +63,7 @@
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .main-grid {
@@ -67,31 +80,45 @@
         }
 
         .card {
-            background: white;
-            border-radius: 12px;
+            background: 
+                linear-gradient(145deg, #DEB887 0%, #8B4513 100%);
+            border: 3px solid #654321;
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
         .card h3 {
-            color: #2c3e50;
+            color: #654321;
             margin-bottom: 15px;
             font-size: 1.3em;
-            border-bottom: 2px solid #3498db;
+            border-bottom: 2px solid #654321;
             padding-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .central-content {
-            background: white;
-            border-radius: 12px;
+            background: 
+                linear-gradient(145deg, #DEB887 0%, #8B4513 100%);
+            border: 3px solid #654321;
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
@@ -108,8 +135,11 @@
             max-width: 500px;
             height: auto;
             border-radius: 8px;
-            border: 3px solid #3498db;
+            border: 3px solid #654321;
             margin: 10px 0;
+            box-shadow: 
+                2px 2px 6px rgba(0, 0, 0, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .interactive-image {
@@ -119,67 +149,97 @@
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            border: 2px solid #8B4513;
         }
 
         .interactive-image:hover {
             transform: scale(1.02);
+            border-color: #654321;
         }
 
         .btn {
             display: inline-block;
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #DEB887 100%);
+            color: #654321;
             padding: 12px 24px;
             text-decoration: none;
-            border-radius: 25px;
+            border: 2px solid #654321;
+            border-radius: 8px;
             transition: all 0.3s ease;
             margin: 5px;
-            font-weight: 600;
+            font-weight: bold;
             text-align: center;
+            box-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .btn:hover {
-            background: linear-gradient(45deg, #2980b9, #1f5f8b);
+            background: 
+                linear-gradient(145deg, #654321 0%, #8B4513 100%);
+            color: #DEB887;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                3px 3px 6px rgba(0, 0, 0, 0.4),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            background: 
+                linear-gradient(145deg, #654321 0%, #8B4513 100%);
+            color: #DEB887;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(45deg, #c0392b, #a93226);
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #DEB887 100%);
+            color: #654321;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .webcam-section {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            color: white;
-            border-radius: 12px;
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #654321 100%);
+            color: #DEB887;
+            border: 3px solid #654321;
+            border-radius: 10px;
             padding: 20px;
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.2),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .webcam-section h3 {
-            color: white;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            color: #DEB887;
+            border-bottom: 2px solid rgba(222, 184, 135, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .webcam-info {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(101, 67, 33, 0.3);
             padding: 10px;
             border-radius: 8px;
             margin: 10px 0;
             font-size: 0.9em;
+            border: 1px solid rgba(222, 184, 135, 0.3);
         }
 
         .library-section {
-            background: linear-gradient(135deg, #fdcb6e, #e17055);
-            color: white;
+            background: 
+                linear-gradient(145deg, #DEB887 0%, #8B4513 100%);
+            color: #654321;
+            border: 3px solid #654321;
         }
 
         .library-section h3 {
-            color: white;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            color: #654321;
+            border-bottom: 2px solid rgba(101, 67, 33, 0.5);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .author-image {
@@ -187,6 +247,7 @@
             height: 50px;
             border-radius: 50%;
             margin: 10px;
+            border: 2px solid #654321;
         }
 
         .article-grid {
@@ -197,21 +258,29 @@
         }
 
         .footer {
-            background: linear-gradient(45deg, #2c3e50, #34495e);
-            color: white;
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #654321 100%);
+            color: #DEB887;
             text-align: center;
             padding: 30px;
-            border-radius: 15px;
+            border: 3px solid #654321;
+            border-radius: 12px;
             margin-top: 30px;
+            box-shadow: 
+                inset 2px 2px 6px rgba(255, 255, 255, 0.2),
+                inset -2px -2px 6px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .footer a {
-            color: #3498db;
+            color: #DEB887;
             text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .footer a:hover {
-            color: #74b9ff;
+            color: #8B4513;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
         }
 
         .contact-info {
@@ -246,11 +315,17 @@
         }
 
         .highlight {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: white;
+            background: 
+                linear-gradient(145deg, #8B4513 0%, #DEB887 100%);
+            color: #654321;
             padding: 15px;
             border-radius: 8px;
             margin: 10px 0;
+            border: 2px solid #654321;
+            box-shadow: 
+                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .mountain-image {
@@ -259,6 +334,10 @@
             height: auto;
             border-radius: 8px;
             margin: 15px 0;
+            border: 3px solid #654321;
+            box-shadow: 
+                2px 2px 6px rgba(0, 0, 0, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .status-bar {
@@ -266,11 +345,17 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
+            background: 
+                linear-gradient(145deg, #654321 0%, #8B4513 100%);
+            color: #DEB887;
             padding: 10px;
             text-align: center;
             z-index: 1000;
+            border-top: 2px solid #654321;
+            box-shadow: 
+                0 -2px 6px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
     </style>
 
@@ -443,7 +528,7 @@
                     <h3>Biblioteca de Sinués "Antón Castro"</h3>
                     <p>(Incluye referencias)</p>
                     <a href="Biblioteca.htm">
-                        <img src="antoncastro.jpg" alt="Antón Castro" class="author-image">
+                        <img src="IMAGENES/Anton Castro Calle.jpeg" alt="Antón Castro" class="author-image">
                     </a>
                     <a href="Biblioteca.htm" class="btn">Visitar Biblioteca</a>
                 </div>
