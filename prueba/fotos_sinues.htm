@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos de Sinués</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+            color: #2F1B14;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #F5DEB3, #DEB887);
+            border-radius: 15px;
+            box-shadow: 
+                inset 3px 3px 8px rgba(139, 69, 19, 0.3),
+                inset -3px -3px 8px rgba(245, 222, 179, 0.8),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 3px solid #8B4513;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: #F5DEB3;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid #654321;
+            box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+            background: linear-gradient(135deg, #F5DEB3, #DEB887);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .photo-card {
+            background: linear-gradient(145deg, #F5DEB3, #DEB887);
+            border-radius: 12px;
+            border: 3px solid #8B4513;
+            box-shadow: 
+                inset 2px 2px 5px rgba(139, 69, 19, 0.2),
+                inset -2px -2px 5px rgba(245, 222, 179, 0.8),
+                0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                inset 2px 2px 5px rgba(139, 69, 19, 0.2),
+                inset -2px -2px 5px rgba(245, 222, 179, 0.8),
+                0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid #8B4513;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-info {
+            padding: 20px;
+            background: linear-gradient(135deg, #F5DEB3, #DEB887);
+        }
+
+        .photo-title {
+            font-size: 1.3em;
+            color: #654321;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(245, 222, 179, 0.8);
+        }
+
+        .photo-description {
+            color: #8B4513;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: #F5DEB3;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border: 2px solid #654321;
+            box-shadow: 
+                inset 1px 1px 3px rgba(245, 222, 179, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, #A0522D, #CD853F);
+            transform: translateY(-2px);
+            box-shadow: 
+                inset 1px 1px 3px rgba(245, 222, 179, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .webcam-section {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #F5DEB3;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+            border: 3px solid #654321;
+            box-shadow: 
+                inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .webcam-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .webcam-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .webcam-btn {
+            background: linear-gradient(45deg, #CD853F, #DEB887);
+            color: #654321;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #8B4513;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .webcam-btn:hover {
+            background: linear-gradient(45deg, #DEB887, #F5DEB3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #CD853F;
+        }
+
+        .share-section {
+            background: linear-gradient(135deg, #F5DEB3, #DEB887);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+            border: 3px solid #8B4513;
+            box-shadow: 
+                inset 2px 2px 5px rgba(139, 69, 19, 0.2),
+                inset -2px -2px 5px rgba(245, 222, 179, 0.8);
+        }
+
+        .share-section h2 {
+            color: #654321;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(245, 222, 179, 0.8);
+        }
+
+        .share-section p {
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+
+        .share-section a {
+            color: #A0522D;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .share-section a:hover {
+            color: #654321;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .webcam-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .photo-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📸 Fotos de Sinués</h1>
+            <p>Descubre la belleza de nuestro pueblo a través de imágenes</p>
+        </header>
+
+        <div class="content">
+            <a href="javascript:history.back()" class="back-button">← Volver</a>
+
+            <div class="webcam-section">
+                <h3>🎥 Webcams en Vivo</h3>
+                <p>Ve Sinués en tiempo real desde cualquier lugar del mundo</p>
+                <div class="webcam-links">
+                    <a href="http://94.228.2.153:81" target="_blank" class="webcam-btn">CAM1 Norte (Vivo)</a>
+                    <a href="https://sinues.es/cam/foto.jpg" target="_blank" class="webcam-btn">CAM1 (Foto 2min)</a>
+                    <a href="http://94.228.2.153:82" target="_blank" class="webcam-btn">CAM2 Oeste (Vivo)</a>
+                    <a href="https://sinues.es/cam2/foto2.jpg" target="_blank" class="webcam-btn">CAM2 (Foto 15seg)</a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
+                    Usuario y contraseña para cámaras en vivo: <strong>sinues2018</strong>
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S1.jpg" alt="Vista panorámica de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S1.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🏔️ Vista Panorámica de Sinués</div>
+                        <div class="photo-description">
+                            Una espectacular vista general del pueblo de Sinués, mostrando su perfecta 
+                            integración con el paisaje pirenaico y las montañas que lo rodean.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S2.jpg" alt="Arquitectura tradicional de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S2.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🏘️ Casas de Piedra Tradicionales</div>
+                        <div class="photo-description">
+                            Las características casas de piedra con tejados de pizarra que definen 
+                            la arquitectura tradicional aragonesa en el corazón de los Pirineos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S3.jpg" alt="Iglesia de San Pedro de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S3.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">⛪ Iglesia de San Pedro</div>
+                        <div class="photo-description">
+                            La iglesia parroquial dedicada a San Pedro, centro espiritual del pueblo 
+                            y magnífico ejemplo de la arquitectura religiosa pirenaica.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S4.jpg" alt="El Torreón de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S4.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🏰 El Torreón Histórico</div>
+                        <div class="photo-description">
+                            El emblemático torreón de Sinués, recientemente restaurado, testimonio 
+                            vivo de la rica historia medieval del valle de Aísa.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S5.jpg" alt="Sinués en primavera" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S5.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🌸 Primavera en el Valle</div>
+                        <div class="photo-description">
+                            La explosión de vida y color que trae la primavera a Sinués, 
+                            con los prados verdes y las flores silvestres adornando el paisaje.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S7.jpg" alt="Paisaje invernal de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S7.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">❄️ Sinués Nevado</div>
+                        <div class="photo-description">
+                            El mágico paisaje invernal de Sinués cubierto de nieve, transformando 
+                            el pueblo en una postal navideña de los Pirineos aragoneses.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S9.jpg" alt="Calles empedradas de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S9.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🛤️ Calles con Historia</div>
+                        <div class="photo-description">
+                            Las estrechas calles empedradas que serpentean por el pueblo, 
+                            conservando el encanto y la autenticidad de siglos pasados.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S10.jpg" alt="Ambiente festivo en Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S10.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🎉 Vida y Tradición</div>
+                        <div class="photo-description">
+                            El ambiente festivo y comunitario que caracteriza a Sinués durante 
+                            las celebraciones y eventos que unen a todo el pueblo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S12.jpg" alt="Entorno natural de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S12.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🌲 Naturaleza Pirenaica</div>
+                        <div class="photo-description">
+                            El espectacular entorno natural que rodea Sinués, con bosques, 
+                            prados y senderos que invitan a la aventura y el senderismo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S13.jpg" alt="Valle de Aísa desde Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S13.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🏞️ Mirador del Valle de Aísa</div>
+                        <div class="photo-description">
+                            Las impresionantes vistas del valle de Aísa desde Sinués, 
+                            con los picos del Aspe, Bisaurín y Collarada como telón de fondo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S14.jpg" alt="Patrimonio arquitectónico" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S14.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🏛️ Patrimonio Conservado</div>
+                        <div class="photo-description">
+                            Cada edificio de Sinués cuenta una historia, mostrando la perfecta 
+                            conservación del patrimonio arquitectónico tradicional aragonés.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S16.jpg" alt="Rincones pintorescos" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S16.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">✨ Rincones con Encanto</div>
+                        <div class="photo-description">
+                            Los pequeños detalles y rincones pintorescos que hacen de Sinués 
+                            un lugar único, lleno de belleza en cada esquina.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S17.jpg" alt="Tradiciones de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S17.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🎭 Tradiciones Vivas</div>
+                        <div class="photo-description">
+                            Las tradiciones ancestrales como el Palotiau siguen vivas en Sinués, 
+                            transmitidas de generación en generación con orgullo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S18.jpg" alt="Paisajes de alta montaña" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S18.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">⛰️ Paisajes de Alta Montaña</div>
+                        <div class="photo-description">
+                            La privilegiada ubicación de Sinués permite disfrutar de paisajes 
+                            de alta montaña únicos en el corazón del Pirineo aragonés.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S19.jpg" alt="Las cuatro estaciones" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S19.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🍂 Belleza en Cada Estación</div>
+                        <div class="photo-description">
+                            Sinués ofrece una belleza diferente en cada estación del año, 
+                            desde la nieve invernal hasta los colores otoñales.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S20.jpg" alt="Vida rural pirenaica" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S20.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🐄 Vida Rural Auténtica</div>
+                        <div class="photo-description">
+                            Sinués representa la esencia de la vida rural pirenaica, 
+                            donde la tradición ganadera y agrícola convive con la modernidad.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S24.jpg" alt="Detalles arquitectónicos únicos" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S24.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🔨 Maestría Artesanal</div>
+                        <div class="photo-description">
+                            Los exquisitos detalles en piedra y madera de las construcciones 
+                            muestran la maestría de los artesanos locales de antaño.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="IMAGENES/fotosGaleria/S28.jpg" alt="Vista aérea de Sinués" class="photo-image" onclick="openModal(this)" onerror="this.src='./IMAGENES/fotosGaleria/S28.jpg'">
+                    <div class="photo-info">
+                        <div class="photo-title">🚁 Sinués Desde las Alturas</div>
+                        <div class="photo-description">
+                            Una perspectiva aérea que muestra la perfecta armonía entre Sinués 
+                            y su entorno montañoso, como una joya engarzada en los Pirineos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <h2>📷 Comparte tus Fotos</h2>
+                <p>
+                    ¿Has visitado Sinués y tienes fotos que te gustaría compartir? 
+                    Envíanoslas y las incluiremos en nuestra galería.
+                </p>
+                <p>
+                    Contacto: 
+                    <a href="mailto:ayuntamiento@sinues.es">ayuntamiento@sinues.es</a>
+                </p>
+            </div>
+
+            <a href="javascript:history.back()" class="back-button">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <!-- Modal para ver imágenes en grande -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openModal(img) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html> 

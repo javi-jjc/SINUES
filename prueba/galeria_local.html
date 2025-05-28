@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Sinués</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        /* Eliminar barras de desplazamiento completamente */
+        * {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+
+        *::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+            font-family: Georgia, 'Times New Roman', serif;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            height: 280px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        #carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotation 30s infinite linear;
+        }
+
+        #carousel:hover {
+            animation-play-state: paused;
+        }
+
+        #carousel figure {
+            display: block;
+            position: absolute;
+            width: 85%;
+            height: 70%;
+            left: 30px;
+            top: 40px;
+            background: linear-gradient(145deg, #F5DEB3, #DEB887);
+            overflow: hidden;
+            border: 4px solid #8B4513;
+            border-radius: 15px;
+            box-shadow: 
+                inset 2px 2px 5px rgba(139, 69, 19, 0.2),
+                inset -2px -2px 5px rgba(245, 222, 179, 0.8),
+                0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Distribución mejorada con más espacio - solo 9 fotos aleatorias */
+        #carousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(450px); }
+        #carousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(450px); }
+        #carousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(450px); }
+        #carousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(450px); }
+        #carousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(450px); }
+        #carousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(450px); }
+        #carousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(450px); }
+        #carousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(450px); }
+        #carousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(450px); }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(15%) saturate(85%) contrast(105%);
+            cursor: pointer;
+            transition: all 0.6s ease;
+            border-radius: 10px;
+        }
+
+        img:hover {
+            filter: sepia(0%) saturate(110%) contrast(115%);
+            transform: scale(1.08);
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 300px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="carousel">
+            <!-- Las fotos se cargarán dinámicamente con JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        let carousel = document.getElementById('carousel');
+
+        // Array con todas las fotos disponibles
+        const allPhotos = [
+            'S1.jpg', 'S2.jpg', 'S3.jpg', 'S4.jpg', 'S5.jpg', 'S7.jpg', 
+            'S9.jpg', 'S10.jpg', 'S12.jpg', 'S13.jpg', 'S14.jpg', 'S16.jpg', 
+            'S17.jpg', 'S18.jpg', 'S19.jpg', 'S20.jpg', 'S24.jpg', 'S28.jpg'
+        ];
+
+        // Descripciones para cada foto
+        const photoDescriptions = {
+            'S1.jpg': 'Vista panorámica de Sinués',
+            'S2.jpg': 'Arquitectura tradicional',
+            'S3.jpg': 'Iglesia de San Pedro',
+            'S4.jpg': 'El Torreón histórico',
+            'S5.jpg': 'Primavera en el valle',
+            'S7.jpg': 'Paisaje invernal',
+            'S9.jpg': 'Calles empedradas',
+            'S10.jpg': 'Vida y tradición',
+            'S12.jpg': 'Naturaleza pirenaica',
+            'S13.jpg': 'Valle de Aísa',
+            'S14.jpg': 'Patrimonio conservado',
+            'S16.jpg': 'Rincones con encanto',
+            'S17.jpg': 'Tradiciones vivas',
+            'S18.jpg': 'Paisajes de montaña',
+            'S19.jpg': 'Las cuatro estaciones',
+            'S20.jpg': 'Vida rural auténtica',
+            'S24.jpg': 'Maestría artesanal',
+            'S28.jpg': 'Vista aérea de Sinués'
+        };
+
+        function getRandomPhotos(count = 9) {
+            const shuffled = [...allPhotos].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function loadRandomPhotos() {
+            const randomPhotos = getRandomPhotos();
+            carousel.innerHTML = '';
+            
+            randomPhotos.forEach((photo, index) => {
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                
+                img.src = `IMAGENES/fotosGaleria/${photo}`;
+                img.alt = photoDescriptions[photo] || `Foto de Sinués ${index + 1}`;
+                img.onerror = function() {
+                    this.src = `./IMAGENES/fotosGaleria/${photo}`;
+                    this.onerror = function() {
+                        // Si tampoco funciona la segunda ruta, crear placeholder
+                        const placeholder = document.createElement('div');
+                        placeholder.style.cssText = `
+                            background: linear-gradient(45deg, #8B4513, #DEB887);
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #F5DEB3;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            font-size: 16px;
+                            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                        `;
+                        placeholder.textContent = `${index + 1}`;
+                        this.style.display = 'none';
+                        this.parentNode.appendChild(placeholder);
+                    };
+                };
+                
+                figure.appendChild(img);
+                carousel.appendChild(figure);
+            });
+        }
+
+        // Cargar fotos aleatorias al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRandomPhotos();
+        });
+    </script>
+</body>
+</html> 

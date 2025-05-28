@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Palotiau de Sinués</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '♪ ♫ ♪ ♫ ♪';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dance-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .step-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .music-section {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .music-section h3 {
+            color: white;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .instruments {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .instrument {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .instrument-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tradition-box {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .dance-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .instruments {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>El Palotiau de Sinués</h1>
+            <p>Tradición, música y danza en el corazón del Valle de Aísa</p>
+        </header>
+
+        <div class="content">
+            <a href="javascript:history.back()" class="back-button">← Volver</a>
+
+            <div class="section">
+                <h2>¿Qué es el Palotiau?</h2>
+                <p>
+                    El Palotiau es una danza tradicional aragonesa que se ejecuta en Sinués durante las 
+                    fiestas patronales y otras celebraciones importantes. Esta ancestral tradición combina 
+                    música, danza y teatro popular, siendo una de las manifestaciones culturales más 
+                    auténticas del valle de Aísa.
+                </p>
+                <div class="highlight-box">
+                    <strong>Origen del nombre:</strong> "Palotiau" deriva de "paloteo", que hace referencia 
+                    al golpeo rítmico de los palos que acompaña la danza.
+                </div>
+                <p>
+                    Esta danza se caracteriza por el uso de palos de madera que los danzantes entrechocan 
+                    siguiendo un ritmo específico, creando una percusión que acompaña la melodía tradicional. 
+                    Es una expresión cultural que ha pasado de generación en generación, manteniendo viva 
+                    la identidad del pueblo.
+                </p>
+            </div>
+
+            <div class="tradition-box">
+                <h3>Una Tradición Centenaria</h3>
+                <p>
+                    El Palotiau de Sinués tiene sus raíces en las danzas rituales que se ejecutaban 
+                    para celebrar las cosechas, las fiestas religiosas y los momentos importantes 
+                    de la comunidad. A lo largo de los siglos, ha evolucionado pero ha mantenido 
+                    su esencia original.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Los Pasos de la Danza</h2>
+                <p>
+                    El Palotiau se compone de varios movimientos coreografiados que requieren 
+                    coordinación y práctica. Cada paso tiene su significado y su momento específico 
+                    dentro de la representación.
+                </p>
+
+                <div class="dance-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Formación Inicial</div>
+                        <div class="step-description">
+                            Los danzantes se colocan en dos filas enfrentadas, 
+                            con los palos en posición de inicio.
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Saludo</div>
+                        <div class="step-description">
+                            Movimiento ceremonial de respeto hacia 
+                            el público y entre los propios danzantes.
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Entrechoque</div>
+                        <div class="step-description">
+                            Los palos se entrechocan siguiendo el ritmo 
+                            de la música, creando la percusión característica.
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Intercambio</div>
+                        <div class="step-description">
+                            Los danzantes cambian de posición en 
+                            movimientos coordinados y fluidos.
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Círculo</div>
+                        <div class="step-description">
+                            Formación circular donde todos los 
+                            participantes giran al unísono.
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Final</div>
+                        <div class="step-description">
+                            Culminación de la danza con un movimiento 
+                            espectacular y el saludo final.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="music-section">
+                <h3>La Música del Palotiau</h3>
+                <p>
+                    La música que acompaña al Palotiau es tan importante como la danza misma. 
+                    Se trata de melodías tradicionales que han sido transmitidas oralmente 
+                    y que mantienen el compás necesario para la correcta ejecución de los pasos.
+                </p>
+
+                <div class="instruments">
+                    <div class="instrument">
+                        <div class="instrument-icon">🎵</div>
+                        <div>Dulzaina</div>
+                    </div>
+                    <div class="instrument">
+                        <div class="instrument-icon">🥁</div>
+                        <div>Tambor</div>
+                    </div>
+                    <div class="instrument">
+                        <div class="instrument-icon">🎶</div>
+                        <div>Gaita</div>
+                    </div>
+                    <div class="instrument">
+                        <div class="instrument-icon">🎼</div>
+                        <div>Acordeón</div>
+                    </div>
+                </div>
+
+                <p>
+                    Los músicos, conocedores de la tradición, marcan el ritmo que guía 
+                    a los danzantes. La sincronización entre música y danza es fundamental 
+                    para el éxito de la representación.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Vestimenta Tradicional</h2>
+                
+                <h3>Traje Masculino</h3>
+                <p>
+                    Los hombres visten pantalón negro, camisa blanca, chaleco tradicional 
+                    aragonés, faja roja y alpargatas. Completan el atuendo con una boina 
+                    o sombrero típico de la región.
+                </p>
+
+                <h3>Traje Femenino</h3>
+                <p>
+                    Las mujeres lucen falda plisada, blusa bordada, delantal decorativo, 
+                    mantón de Manila y zapatos tradicionales. Los colores suelen ser 
+                    vivos y representativos de la región.
+                </p>
+
+                <div class="highlight-box">
+                    <strong>Detalle importante:</strong> Cada elemento de la vestimenta tiene 
+                    un significado cultural y representa la identidad del valle de Aísa.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Cuándo se Baila</h2>
+                
+                <h3>Fiestas Patronales</h3>
+                <p>
+                    El momento más importante para el Palotiau son las fiestas en honor a 
+                    San Pedro (29 de junio), patrón de Sinués. Durante estos días, la danza 
+                    se ejecuta en la plaza del pueblo ante vecinos y visitantes.
+                </p>
+
+                <h3>Celebraciones Especiales</h3>
+                <p>
+                    También se representa en bodas, bautizos y otras celebraciones importantes 
+                    de la comunidad, así como en festivales folclóricos de la región.
+                </p>
+
+                <h3>Eventos Culturales</h3>
+                <p>
+                    El grupo de danza de Sinués participa en encuentros folclóricos, 
+                    festivales de tradiciones aragonesas y eventos de promoción cultural 
+                    del valle de Aísa.
+                </p>
+            </div>
+
+            <div class="quote">
+                "El Palotiau no es solo una danza, es el alma de Sinués que se expresa 
+                a través del movimiento, la música y la tradición compartida."
+                <br><em>- Testimonio de un vecino de Sinués</em>
+            </div>
+
+            <div class="section">
+                <h2>Preservación de la Tradición</h2>
+                <p>
+                    En Sinués existe un compromiso firme con la preservación del Palotiau. 
+                    Los mayores del pueblo enseñan a las nuevas generaciones, asegurando 
+                    que esta tradición centenaria no se pierda.
+                </p>
+                <p>
+                    Se organizan ensayos regulares, especialmente antes de las fiestas, 
+                    donde jóvenes y adultos practican juntos, creando un vínculo 
+                    intergeneracional que fortalece la comunidad.
+                </p>
+                <p>
+                    La documentación audiovisual de las representaciones también contribuye 
+                    a preservar esta tradición para las futuras generaciones y para dar 
+                    a conocer la riqueza cultural de Sinués al mundo.
+                </p>
+            </div>
+
+            <div class="tradition-box">
+                <h3>¿Quieres Aprender?</h3>
+                <p>
+                    Si estás interesado en aprender el Palotiau o conocer más sobre 
+                    esta tradición, puedes contactar con el Ayuntamiento de Sinués. 
+                    Durante las fiestas patronales, también se organizan talleres 
+                    para visitantes que quieran participar en esta experiencia cultural única.
+                </p>
+            </div>
+
+            <a href="javascript:history.back()" class="back-button">← Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html> 

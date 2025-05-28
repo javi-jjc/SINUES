@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de Sinués</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+            padding-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            margin-right: 0;
+            text-align: left;
+            padding-left: 40px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .timeline-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-text {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: #3498db;
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .timeline-item::before {
+                left: 20px;
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Historia de Sinués</h1>
+            <p>Un viaje a través del tiempo en el Valle de Aísa</p>
+        </header>
+
+        <div class="content">
+            <a href="javascript:history.back()" class="back-button">← Volver</a>
+
+            <div class="section">
+                <h2>Orígenes y Etimología</h2>
+                <p>
+                    El nombre de Sinués tiene sus raíces en la época romana. Deriva del latín "Sinus", que significa 
+                    "seno" o "bahía", haciendo referencia a la forma del valle donde se asienta el pueblo, 
+                    rodeado de montañas que forman una especie de anfiteatro natural.
+                </p>
+                <div class="highlight-box">
+                    <strong>Dato curioso:</strong> Sinués se encuentra a 1.078 metros de altitud, 
+                    siendo uno de los pueblos más altos del valle de Aísa.
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Época Romana</div>
+                        <div class="timeline-title">Primeros Asentamientos</div>
+                        <div class="timeline-text">
+                            Los primeros vestigios de ocupación humana en la zona datan de la época romana. 
+                            La posición estratégica del valle facilitaba el control de las rutas comerciales 
+                            entre España y Francia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Siglo XI</div>
+                        <div class="timeline-title">Época Medieval</div>
+                        <div class="timeline-text">
+                            Durante la Edad Media, Sinués formaba parte del Reino de Aragón. 
+                            Se construyeron las primeras fortificaciones y la iglesia parroquial, 
+                            estableciendo el núcleo urbano que conocemos hoy.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Siglo XVI</div>
+                        <div class="timeline-title">Desarrollo Agrícola</div>
+                        <div class="timeline-text">
+                            El pueblo experimenta un crecimiento significativo gracias a la agricultura 
+                            y la ganadería. Se construyen las casas tradicionales de piedra que 
+                            caracterizan el casco urbano actual.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Siglo XIX</div>
+                        <div class="timeline-title">Época Moderna</div>
+                        <div class="timeline-text">
+                            Con la llegada del ferrocarril a Jaca, Sinués se conecta mejor con el exterior. 
+                            Se mejoran las comunicaciones y comienza un lento proceso de modernización.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Siglo XX</div>
+                        <div class="timeline-title">Transformación Contemporánea</div>
+                        <div class="timeline-text">
+                            El desarrollo del turismo de montaña y las estaciones de esquí cercanas 
+                            (Candanchú) transforman la economía local. Sinués se convierte en un 
+                            destino turístico rural.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Siglo XXI</div>
+                        <div class="timeline-title">Era Digital</div>
+                        <div class="timeline-text">
+                            Sinués abraza la modernidad manteniendo sus tradiciones. 
+                            Se instalan webcams para mostrar el pueblo al mundo y se 
+                            desarrolla una presencia digital que atrae visitantes de toda España.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Patrimonio Histórico</h2>
+                
+                <h3>Iglesia Parroquial</h3>
+                <p>
+                    La iglesia de Sinués, dedicada a San Pedro, es un ejemplo de arquitectura religiosa 
+                    aragonesa. Su construcción data del siglo XVI, aunque ha sufrido diversas reformas 
+                    a lo largo de los siglos.
+                </p>
+
+                <h3>Arquitectura Popular</h3>
+                <p>
+                    Las casas tradicionales de Sinués están construidas en piedra local, con tejados 
+                    de pizarra y balconadas de madera. Esta arquitectura se adapta perfectamente al 
+                    clima de montaña y forma un conjunto urbano de gran belleza.
+                </p>
+
+                <h3>El Torreón</h3>
+                <p>
+                    Recientemente restaurado, el torreón de Sinués es uno de los elementos más 
+                    característicos del pueblo. Servía como punto de vigilancia y defensa en épocas pasadas.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Tradiciones y Cultura</h2>
+                
+                <h3>El Palotiau</h3>
+                <p>
+                    Una de las tradiciones más arraigadas de Sinués es el Palotiau, una danza tradicional 
+                    que se ejecuta durante las fiestas patronales. Esta tradición se ha mantenido viva 
+                    durante generaciones y es un símbolo de la identidad cultural del pueblo.
+                </p>
+
+                <h3>Fiestas Patronales</h3>
+                <p>
+                    Las fiestas en honor a San Pedro se celebran a finales de junio. Durante estos días, 
+                    el pueblo se llena de música, bailes tradicionales y actividades que reúnen a 
+                    vecinos y visitantes.
+                </p>
+
+                <div class="highlight-box">
+                    <strong>Biblioteca "Antón Castro":</strong> Sinués cuenta con una biblioteca 
+                    que lleva el nombre del reconocido escritor aragonés, quien mantuvo una 
+                    estrecha relación con el pueblo.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Biblioteca "Antón Castro"</h2>
+                <div style="display: flex; gap: 20px; align-items: center; margin: 20px 0; flex-wrap: wrap;">
+                    <img src="IMAGENES/Anton Castro Calle.jpeg" alt="Antón Castro" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+                    <div style="flex: 1; min-width: 300px;">
+                        <p>
+                            La biblioteca municipal de Sinués lleva el nombre del prestigioso escritor y crítico 
+                            literario aragonés <strong>Antón Castro</strong>, en reconocimiento a su labor de 
+                            promoción de la cultura aragonesa y su vinculación con el valle de Aísa.
+                        </p>
+                        <p style="margin-top: 15px;">
+                            Antón Castro, nacido en Zaragoza en 1959, es uno de los escritores más reconocidos 
+                            de Aragón. Ha sido director del suplemento cultural "Artes y Letras" del Heraldo 
+                            de Aragón y autor de numerosas obras literarias que han puesto en valor la cultura 
+                            y las tradiciones aragonesas.
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    La biblioteca, aunque pequeña, es un centro cultural importante para el pueblo, 
+                    ofreciendo no solo libros sino también un espacio de encuentro para los vecinos 
+                    y visitantes interesados en conocer más sobre la historia y cultura de Sinués.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Geografía e Importancia Estratégica</h2>
+                <p>
+                    Sinués se encuentra en una posición privilegiada dentro del valle de Aísa, 
+                    ofreciendo vistas panorámicas hacia los picos más emblemáticos de los Pirineos 
+                    aragoneses: el Aspe, Bisaurín y Collarada.
+                </p>
+                <p>
+                    Esta ubicación ha sido clave a lo largo de la historia, convirtiendo al pueblo 
+                    en un punto de observación natural y en un lugar de paso obligado para quienes 
+                    transitaban por el valle.
+                </p>
+            </div>
+
+            <a href="javascript:history.back()" class="back-button">← Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html> 

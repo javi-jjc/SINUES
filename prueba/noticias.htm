@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias de Sinués</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .news-date {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #2980b9;
+        }
+
+        .featured-news {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .featured-news h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .breaking-news {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .weather-widget {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Noticias de Sinués</h1>
+            <p>Mantente informado sobre lo que pasa en nuestro pueblo</p>
+        </header>
+
+        <div class="content">
+            <a href="javascript:history.back()" class="back-button">← Volver</a>
+
+            <div class="breaking-news">
+                <h3>🔴 ÚLTIMA HORA</h3>
+                <p>Las webcams de Sinués funcionan perfectamente y ofrecen vistas en tiempo real del pueblo. ¡Conéctate y disfruta de nuestros paisajes desde cualquier lugar del mundo!</p>
+            </div>
+
+            <div class="featured-news">
+                <h2>🎉 Próximas Fiestas Patronales 2024</h2>
+                <p>
+                    Las fiestas en honor a San Pedro se celebrarán del 28 al 30 de junio. 
+                    Este año contaremos con actuaciones especiales del grupo de Palotiau, 
+                    conciertos y actividades para toda la familia.
+                </p>
+            </div>
+
+            <div class="weather-widget">
+                <h3>🌤️ El Tiempo en Sinués</h3>
+                <p>Para consultar la previsión meteorológica actualizada, visita: 
+                <a href="http://www.eltiempo.es/sinues.html" target="_blank" style="color: #ffeb3b;">eltiempo.es/sinues</a></p>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">15 de Marzo, 2024</div>
+                        <h3 class="news-title">Renovación del Sistema de Webcams</h3>
+                        <span class="news-category">Tecnología</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            El Ayuntamiento ha completado la actualización del sistema de webcams que 
+                            permite ver Sinués en tiempo real. Las nuevas cámaras ofrecen mejor calidad 
+                            de imagen y funcionan las 24 horas del día.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">8 de Marzo, 2024</div>
+                        <h3 class="news-title">Biblioteca "Antón Castro" Amplía Horarios</h3>
+                        <span class="news-category">Cultura</span>
+                    </div>
+                    <div class="news-content">
+                        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
+                            <img src="IMAGENES/Anton Castro Calle.jpeg" alt="Antón Castro" style="width: 80px; height: auto; border-radius: 6px; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);">
+                            <div>
+                                <p class="news-excerpt">
+                                    La biblioteca municipal amplía sus horarios de apertura para ofrecer 
+                                    mejor servicio a los vecinos. Nuevos libros y recursos digitales 
+                                    disponibles para toda la comunidad.
+                                </p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">
+                            La biblioteca lleva el nombre del prestigioso escritor aragonés Antón Castro, 
+                            en reconocimiento a su labor cultural.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">1 de Marzo, 2024</div>
+                        <h3 class="news-title">Restauración del Torreón Completada</h3>
+                        <span class="news-category">Patrimonio</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Finalizan los trabajos de restauración del histórico torreón de Sinués. 
+                            El emblemático edificio luce renovado manteniendo su carácter tradicional 
+                            y será visitable durante las fiestas patronales.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">22 de Febrero, 2024</div>
+                        <h3 class="news-title">Nuevo Sendero Interpretativo</h3>
+                        <span class="news-category">Turismo</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se ha inaugurado un nuevo sendero interpretativo que conecta Sinués 
+                            con los miradores naturales del valle. Incluye paneles informativos 
+                            sobre la flora y fauna local.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">14 de Febrero, 2024</div>
+                        <h3 class="news-title">Mejoras en el Acceso al Pueblo</h3>
+                        <span class="news-category">Infraestructura</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Concluyen las obras de mejora en la carretera de acceso a Sinués. 
+                            Se ha mejorado el firme y la señalización, facilitando el acceso 
+                            tanto a residentes como a visitantes.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">5 de Febrero, 2024</div>
+                        <h3 class="news-title">Taller de Palotiau para Jóvenes</h3>
+                        <span class="news-category">Tradición</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se organiza un taller especial para enseñar la danza tradicional del 
+                            Palotiau a los jóvenes del pueblo. Una iniciativa para preservar 
+                            nuestras tradiciones culturales.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">28 de Enero, 2024</div>
+                        <h3 class="news-title">Sinués en los Medios Nacionales</h3>
+                        <span class="news-category">Reconocimiento</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Varios medios de comunicación nacionales han destacado a Sinués 
+                            como uno de los pueblos más pintorescos del Pirineo aragonés, 
+                            aumentando el interés turístico en nuestra localidad.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">20 de Enero, 2024</div>
+                        <h3 class="news-title">Programa de Voluntariado Local</h3>
+                        <span class="news-category">Comunidad</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se pone en marcha un programa de voluntariado para el mantenimiento 
+                            de espacios comunes y ayuda a vecinos mayores. Una iniciativa que 
+                            fortalece los lazos comunitarios.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">10 de Enero, 2024</div>
+                        <h3 class="news-title">Nuevas Rutas de Senderismo</h3>
+                        <span class="news-category">Deporte</span>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se han señalizado nuevas rutas de senderismo que parten desde Sinués 
+                            hacia los picos circundantes. Incluyen diferentes niveles de dificultad 
+                            para todos los públicos.
+                        </p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; margin: 30px 0; text-align: center;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">📧 Suscríbete a Nuestro Boletín</h2>
+                <p style="color: #555; margin-bottom: 20px;">
+                    Recibe las últimas noticias de Sinués directamente en tu correo electrónico.
+                </p>
+                <p style="color: #3498db; font-weight: 600;">
+                    Contacta con el Ayuntamiento: 
+                    <a href="mailto:ayuntamiento@sinues.es" style="color: #e74c3c;">ayuntamiento@sinues.es</a>
+                </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 25px; border-radius: 12px; margin: 30px 0;">
+                <h3>🌟 ¿Tienes una Noticia que Compartir?</h3>
+                <p>
+                    Si tienes información relevante para la comunidad de Sinués, 
+                    no dudes en contactar con nosotros. Queremos que todos los vecinos 
+                    estén informados de lo que acontece en nuestro querido pueblo.
+                </p>
+            </div>
+
+            <a href="javascript:history.back()" class="back-button">← Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html> 
